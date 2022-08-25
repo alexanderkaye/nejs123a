@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NEJS 123a - Maps, Graphs and Timelines: Technology and Design in Historical Research</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"><p>NEJS 123a - Maps, Graphs and Timelines: Technology
+and Design in Historical Research</p></h1>
+<p class="author"><p>Alexander Kaye<br />
+<a href="mailto:akaye@brandeis.edu"
+class="email">akaye@brandeis.edu</a><br />
+<br />
+T,Th 2:20–3:40 pm.<br />
+<br />
+Lown 103</p></p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#contact-details" id="toc-contact-details">Contact
+Details</a></li>
+<li><a href="#course-information" id="toc-course-information">Course
+Information</a>
+<ul>
+<li><a href="#course-description" id="toc-course-description">Course
+Description</a></li>
+<li><a href="#learning-goals" id="toc-learning-goals">Learning
+Goals</a></li>
+<li><a href="#credit-hours" id="toc-credit-hours">Credit Hours</a></li>
+</ul></li>
+<li><a href="#course-requirements" id="toc-course-requirements">Course
+Requirements</a>
+<ul>
+<li><a href="#academic-integrity" id="toc-academic-integrity">Academic
+Integrity</a></li>
+<li><a href="#class-conduct" id="toc-class-conduct">Class
+Conduct</a></li>
+<li><a href="#assignments-and-class-attendance"
+id="toc-assignments-and-class-attendance">Assignments and Class
+Attendance</a></li>
+<li><a href="#evaluation" id="toc-evaluation">Evaluation</a></li>
+<li><a href="#essential-resources"
+id="toc-essential-resources">Essential Resources</a></li>
+<li><a href="#technology-policy" id="toc-technology-policy">Technology
+policy</a></li>
+</ul></li>
+<li><a href="#course-resources" id="toc-course-resources">Course
+Resources</a>
+<ul>
+<li><a href="#syllabi-and-curricula-on-the-web"
+id="toc-syllabi-and-curricula-on-the-web">Syllabi and curricula on the
+web</a></li>
+<li><a href="#a-selection-of-digital-humanities-resources"
+id="toc-a-selection-of-digital-humanities-resources">A Selection of
+Digital Humanities Resources</a></li>
+</ul></li>
+<li><a href="#lectures-and-readings"
+id="toc-lectures-and-readings">Lectures and Readings</a>
+<ul>
+<li><a href="#unit-1.-introductory-explorations"
+id="toc-unit-1.-introductory-explorations">Unit 1. Introductory
+explorations</a></li>
+<li><a href="#unit-2.-big-data" id="toc-unit-2.-big-data">Unit 2. Big
+Data</a></li>
+<li><a href="#unit-4.-digital-visualization-in-the-humanities"
+id="toc-unit-4.-digital-visualization-in-the-humanities">Unit 4. Digital
+Visualization in the Humanities</a></li>
+<li><a href="#unit-3.-close-reading-and-distant-reading"
+id="toc-unit-3.-close-reading-and-distant-reading">Unit 3. Close Reading
+and Distant Reading</a></li>
+<li><a href="#unit-5.-mapping" id="toc-unit-5.-mapping">Unit 5.
+Mapping</a></li>
+<li><a href="#unit-6.-human-bias-computational-bias"
+id="toc-unit-6.-human-bias-computational-bias">Unit 6. Human bias,
+computational bias</a></li>
+<li><a href="#visits-from-dh-practitioners-and-scholars"
+id="toc-visits-from-dh-practitioners-and-scholars">Visits from DH
+Practitioners and Scholars</a></li>
+<li><a href="#unit-8.-preliminary-presentations-and-class-feedback"
+id="toc-unit-8.-preliminary-presentations-and-class-feedback">Unit 8.
+Preliminary presentations and class feedback</a></li>
+<li><a href="#unit-9.-supervised-work-on-final-projects"
+id="toc-unit-9.-supervised-work-on-final-projects">Unit 9. Supervised
+work on final projects</a></li>
+<li><a href="#unit-10.-concluding-conversations-and-presentations"
+id="toc-unit-10.-concluding-conversations-and-presentations">Unit 10.
+Concluding conversations and presentations</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="contact-details">Contact Details</h2>
+<p><strong>Instructor:</strong> Alexander Kaye (NEJS)</p>
+<p>Office location: The Mandel Center for the Humanities rm. 307</p>
+<p>Email: <a
+href="mailto:alexanderkaye@brandeis.edu">alexanderkaye@brandeis.edu</a></p>
+<p>Email is the best way to contact me. I will endeavour to respond
+within 24 hours (excepting weekends and university or religious
+holidays).</p>
+<p>Office hours will be held online on Thursday 12-1 pm., or at other
+times by appointment, either virtually or in-person. <em>Please sign up
+for a slot in office hours in advance.</em></p>
+<h1 id="course-information">Course Information</h1>
+<h2 id="course-description">Course Description</h2>
+<p>This course will teach students to use digital tools such as graphs,
+maps, timelines, and text analysis to enhance their scholarship in the
+humanities. Students will use data drawn from their own areas of
+interest so this course will support any program of study in the
+university.</p>
+<p>In addition to learning how to use these digital tools, students will
+also learn how to think <em>about</em> digital visualization: What
+insights can be gleaned from a timeline or a map that cannot be gleaned
+from a simple paragraph of text? How does digital visualization help us
+to make connections that we might otherwise miss? What opportunities
+does digital visualization offer for increasing accessibility for people
+with disabilities or people from disadvantaged groups? Finally, students
+will learn how to analyze and critique representations of data from a
+variety of sources, to learn from the best practices of other scholars
+and to be able to identify shortcomings such as implicit bias in the
+selection of sources and the representation of data.</p>
+<p>Every student will produce their own work of digital visualization
+based on their own research interests. (This might be, for example, a
+graphic timeline of the life of Muhammad, a network map of letters
+between Jewish women in the 19th century, an interactive annotation of a
+Hebrew poem, a word cloud analysis of the Fiqh,and so on.) The best
+projects will be featured on the department’s website and will be a
+showcase of the talents of Brandeis students.</p>
+<p>The skills taught in this course are highly prized in the job market
+and are applicable to a wide variety of professions as well as further
+study in graduate school and beyond.</p>
+<h2 id="learning-goals">Learning Goals</h2>
+<p>This course is intended to fulfill requirements in the Foundational
+Literacies of Digital Literacy and Oral Communication.</p>
+<p>After this course, students will:</p>
+<ol type="1">
+<li>Learn practical skills in the digital visualization of data in
+various fields in the humanities, using tools such as timelines and
+maps, and acquiring the ability to create websites.</li>
+<li>Appreciate the potential of the digital humanities for enhancing
+research and the opportunities it provides for increasing accessibility
+to scholarship.</li>
+<li>Learn how to analyze the digital humanities, and to critique its
+engagement with issues of accessibility, gender, and race.</li>
+</ol>
+<h2 id="credit-hours">Credit Hours</h2>
+<p>Success in this 4 credit course is based on the expectation that
+students will spend a minimum of 9 hours of study time per week in
+preparation for class (readings, papers, discussion sections,
+preparation for exams, etc.)</p>
+<h1 id="course-requirements">Course Requirements</h1>
+<h2 id="academic-integrity">Academic Integrity</h2>
+<p>Every member of the University community is expected to maintain the
+highest standards of academic integrity. A student shall not submit work
+that is falsified or is not the result of the student's own effort.
+Infringement of academic honesty by a student subjects that student to
+serious penalties, which may include failure on the assignment, failure
+in the course, suspension from the University or other sanctions (see
+section 20 of R&amp;R). Please consult Brandeis University Rights and
+Responsibilities for all policies and procedures related to academic
+integrity. Students may be required to submit work to TurnItIn.com
+software to verify originality. A student who is in doubt regarding
+standards of academic honesty as they apply to a specific course or
+assignment should consult the faculty member responsible for that course
+or assignment before submitting the work. Allegations of alleged
+academic dishonesty will be forwarded to the Department of Student
+Rights and Community Standards. Citation and research assistance can be
+found at <a
+href="https://guides.library.brandeis.edu/c.php?g=301723">Brandeis
+Library Guides - Citing Sources</a> (<a
+href="https://guides.library.brandeis.edu/c.php?g=301723"
+class="uri">https://guides.library.brandeis.edu/c.php?g=301723</a>).</p>
+<h2 id="class-conduct">Class Conduct</h2>
+<p>Study in the humanities entails grappling with big ideas about human
+thought, belief, behavior, and practice. Therefore, any course in
+history is bound to be the site of different opinions. Collegial debate
+is welcome, but aggressive behavior has no place in our classroom.
+Please exercise respect for your colleagues.</p>
+<h2 id="assignments-and-class-attendance">Assignments and Class
+Attendance</h2>
+<p>Class attendance is required. Two unexcused absences will be
+overlooked without penalty. More than two unexcused absences might
+result in a grade penalty.</p>
+<p>Students are expected to listen actively and attentively, and to
+respond thoughtfully and constructively during class discussions, when
+appropriate.</p>
+<p>All readings and assignments must be completed <em>before</em> the
+session for which they were assigned. <strong>If an assignment is listed
+in the syllabus under a particular date, it must be submitted by
+midnight of the previous day.</strong></p>
+<p>Unless excused, late assignments will not be accepted and will
+receive a grade of zero. Extensions will not be granted except in the
+case of an emergency situation. <strong>If you feel you are falling
+behind for any reason, please do not hesitate to reach out to the
+instructor.</strong></p>
+<p>The course will be managed through Google Classrooms.</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>Requirements for the course include:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Attendance, Preparation and Active
+Participation</td>
+<td style="text-align: left;">15%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exercises and assignments</td>
+<td style="text-align: left;">35%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Final project</td>
+<td style="text-align: left;">50%</td>
+</tr>
+</tbody>
+</table>
+<p>There will be no mid-term or final examination.</p>
+<h2 id="essential-resources">Essential Resources</h2>
+<h3 id="accommodations">Accommodations</h3>
+<p>Brandeis seeks to welcome and include all students. If you are a
+student who needs accommodations as outlined in an accommodations
+letter, I want to support you. In order to provide test accommodations,
+I need the letter more than 48 hours in advance. I want to provide your
+accommodations, but cannot do so retroactively. If you have questions
+about documenting a disability of requesting accommodations, please
+contact <a href="https://www.brandeis.edu/accessibility/">Student
+Accessibility Support</a> (SAS <a
+href="https://www.brandeis.edu/accessibility/"
+class="uri">https://www.brandeis.edu/accessibility/</a>) at 781.736.3470
+or <a href="mailto:access@brandeis.edu"
+class="email">access@brandeis.edu</a>.</p>
+<h3 id="course-materials">Course Materials</h3>
+<p>All course readings will be provided by the instructor, or may be
+found online. As much as possible, course materials will be open access,
+or available for free to students through the university library.</p>
+<p>If you are having difficulty purchasing course materials, please make
+an appointment with your Student Financial Services or Academic Services
+advisor to discuss possible funding options and/or textbook
+alternatives.</p>
+<h3 id="apps-and-equipment">Apps and equipment</h3>
+<p><a
+href="file:///C:\Users\mary-annwinkelmes\Desktop\MAW%20files\Brandeis\Accessibility\LATTE">LATTE</a>
+is the Brandeis learning management system: <a
+href="http://latte.brandeis.edu"
+class="uri">http://latte.brandeis.edu</a>. Login using your UNET ID and
+password.</p>
+<p>This course will be hosted on its own Google Classroom site. You will
+be given instructions about how to sign up for the class’s site.</p>
+<p>In this course, we will be exploring various technologies used in the
+digital humanities. All software we will use will be available for free
+to students. Students should have access to a computer (or other device)
+which has the ability to record video and audio.</p>
+<h3 id="library">Library</h3>
+<p><a href="https://www.brandeis.edu/library/about/index.html">The
+Brandeis Library</a> collections and staff offer resources and services
+to support Brandeis students, faculty and staff. These include
+workshops, consultations, collaboration, materials and instruction on
+emerging trends in technologies such as machine learning, emerging
+trends in research such as data visualization, and emerging trends in
+scholarship such as open access. Librarians at the Circulation Desk,
+Research Help Desk, Archives &amp; Special Collections, Sound &amp;
+Image Media Studios, MakerLab, AutomationLab, and Digital Scholarship
+Lab are available to help you. <a
+href="https://www.brandeis.edu/library/about/index.html"
+class="uri">https://www.brandeis.edu/library/about/index.html</a></p>
+<h3 id="student-support">Student Support</h3>
+<p>Brandeis University is committed to supporting all our students so
+they can thrive. The following resources are available to help with the
+many academic and non-academic factors that contribute to student
+success (finances, health, food supply, housing, mental health
+counseling, academic advising, physical and social activities, etc.).
+Please explore the many links on this <a
+href="https://www.brandeis.edu/support/undergraduate-students/browse.html">Support
+at Brandeis</a> page (<a
+href="https://www.brandeis.edu/support/undergraduate-students/browse.html"
+class="uri">https://www.brandeis.edu/support/undergraduate-students/browse.html</a>)
+to find out more about the resources that Brandeis provides to help you
+and your classmates to achieve success.</p>
+<h3 id="teaching-continuity">Teaching Continuity</h3>
+<p>Email is the best way that I have to communicate with you outside of
+class. Even if email is not your usual mode of communication, please
+make sure that you check it every day in case the instructor needs to
+get in touch with you. Similarly, please make check Latte frequently so
+that you are aware of announcements about the course.</p>
+<p>This course will be taught entirely online but it would in any case
+be wise to keep yourselves informed of possible changes and disruptions
+that might arise as a result of COVID-19. See <a
+href="https://www.brandeis.edu/teaching/teaching-continuity.html">Teaching
+Continuity</a> at <a
+href="https://www.brandeis.edu/teaching/teaching-continuity.html"
+class="uri">https://www.brandeis.edu/teaching/teaching-continuity.html</a>).</p>
+<h2 id="technology-policy">Technology policy</h2>
+<p>The evidence increasingly suggests that most students produce better
+work and receive higher grades when taking notes by hand rather than
+using a laptop. For this reason, even though you will be sitting in
+front of a computer for your virtual meetings, I recommend that you
+consider taking notes by hand.</p>
+<p>During our virtual meetings, please resist the urge to check email or
+social media, or engage in other behaviour that will distract you from
+class. The urge to loose focus is very strong but please do everything
+you can to make sure you are focussed on class during the time that we
+meet.</p>
+<h1 id="course-resources">Course Resources</h1>
+<p>During the course, you will spend a lot of time experimenting,
+exploring, analyzing and assessing digital humanities projects on the
+web. The resources below give you some places to start as you are
+looking for DH resources to study. You are never limited to this list,
+however. Follow your curiosity and interests to wherever you want to
+go.</p>
+<h2 id="syllabi-and-curricula-on-the-web">Syllabi and curricula on the
+web</h2>
+<p><em>Some of the material in this syllabus has been drawn from the
+curricula of experts in the digital humanities. For further reading, I
+encourage you to explore their websites. For example:</em></p>
+<p><a href="http://dancohen.org/clio-wired/">“Clio Wired”, Dan Cohen
+(Northeastern University)</a></p>
+<p><a
+href="http://www.michaeljkramer.net/syllabus-approaching-digital-humanities/">“Approaching
+Digital Humanities”, Michael J. Kramer (Middlebury College)</a></p>
+<p><a href="http://miriamposner.com/classes/dh101f17/">“Introduction to
+the Digital Humanities”, Miriam Posner (UCLA)</a></p>
+<h2 id="a-selection-of-digital-humanities-resources">A Selection of
+Digital Humanities Resources</h2>
+<p><a href="https://simmons.libguides.com/DigitalHumanities">Simmons
+University Library Guide on Digital Humanities</a>. (Good selection of
+resources broken down by subject eg. “Gender”, “Religion”, etc.)</p>
+<p><a href="https://www.metmuseum.org/art/online-features">The
+Metropolitan Museum of Art (NY), Online Features</a></p>
+<p><a
+href="http://manyeyes.alphaworks.ibm.com/manyeyes/visualizations">Many
+Eyes</a></p>
+<p><a href="http://apps.facebook.com/gnh_index/">Gross National
+Happiness</a></p>
+<p><a href="http://feltron.com/">Feltron reports</a></p>
+<p><a href="http://maptime.io/anatomy-of-a-web-map/#0">Anatomy of a Web
+Map</a></p>
+<p><a
+href="https://guides.library.brandeis.edu/c.php?g=502151&amp;p=3437017">Brandeis
+Library, Finding Maps in Digital Collections &amp; Databases</a></p>
+<p>Will Thomas and Edward Ayers, “The Difference Slavery Made: A Close
+Analysis of Two American Communities,” <a
+href="http://www.vcdh.virginia.edu/AHR/"
+class="uri">http://www.vcdh.virginia.edu/AHR/</a></p>
+<p><a href="http://hypercities.com/">Hypercities</a></p>
+<p><a href="http://www.philaplace.org/">PhilaPlace</a></p>
+<p><a href="http://culturalgardens.org/euclidcorridor/">Euclid Corridor
+History Project</a></p>
+<p>Any of the sites at <a
+href="https://docs.google.com/spreadsheets/d/1qZkBPXWqq1VsLkUCYEC22uVoxl7-dW2TRlcnvgACY3c/edit#gid=1739060195">this</a>
+database of Jewish Digital Humanities projects, compiled by Michelle
+Chesner, Jewish Studies librarian at Columbia University</p>
+<p><a href="http://diarna.org/">Diarna: Geo-Museum of North African and
+Middle Eastern Jewish Life</a></p>
+<p><a href="https://footprints.ccnmtl.columbia.edu/">Footprints: Jewish
+Books through Time and Place</a></p>
+<p><a href="https://islamicdh.org/">Digital Islamic Studies Project,
+Brown University</a></p>
+<p><a href="http://whc.unesco.org/en/interactive-map/">Unesco World
+Heritage - Interactive Map</a></p>
+<p>Any of the exhibits at <a
+href="https://omeka.lts.brandeis.edu/">Omeka at Brandeis</a></p>
+<p><a href="http://memoriesmotifs.com/">Memories/Motifs: Holocaust
+Survivor Narratives in Postwar America</a></p>
+<p>Arabic language text corpora. See the <a
+href="https://sites.google.com/a/aucegypt.edu/infoguistics/directory/Corpus-Linguistics/arabic-corpora">list</a>
+by Ayman Eddakrouri, at the American University in Cairo.</p>
+<p>Hebrew and Jewish text corpora. See the list at the <a
+href="https://guides.library.brandeis.edu/c.php?g=301731&amp;p=2018354">Brandeis
+Libraries Judaica Research Guide</a>.</p>
+<p><a href="https://www.sefaria.org">The Sefaria Library</a></p>
+<p><a
+href="https://guides.library.brandeis.edu/az.php?q=newspaper">Digitized
+newspaper archives available at Brandeis Library</a></p>
+<p><a href="https://www.english-corpora.org/">English Language
+Corpora</a></p>
+<p><a href="http://republicofletters.stanford.edu/">Mapping the Republic
+of Letter (Stanford University)</a></p>
+<p>Ben Fry, <a href="http://benfry.com/traces/">The Preservation of
+Favoured Traces</a></p>
+<h1 id="lectures-and-readings">Lectures and Readings</h1>
+<h2 id="unit-1.-introductory-explorations">Unit 1. Introductory
+explorations</h2>
+<h3 id="thu-25-aug"><span class="date">Thu 25 Aug</span></h3>
+<p>Check out the following sites:</p>
+<p><a href="http://listen.hatnote.com/">Listen to Wikipedia</a></p>
+<p><a
+href="https://mappinghny.com/?lng=-73.9760&amp;lat=40.7220&amp;zoom=12.50&amp;maps=%5B%7B%22center%22%3A%7B%22lng%22%3A-73.976,%22lat%22%3A40.722%7D,%22demographicOpacity%22%3A1,%22demographicsFilters%22%3A%7B%7D,%22filters%22%3A%7B%7D,%22layers%22%3A%5B%7B%22id%22%3A%22dwellings-dot-density-birthplace%22%7D%5D,%22rasterOpacity%22%3A1,%22year%22%3A%221880%22,%22zoom%22%3A12.5%7D%5D&amp;rasterOpacity0=1">Mapping
+Historical New York: A Digital Atlas</a></p>
+<p><strong>add text-based project here</strong></p>
+<h4 id="assignment-due-next-class">Assignment (Due next class)</h4>
+<p>For each of the websites we have explored today, write <em>brief</em>
+answers to the following questions (bullet form is fine.):</p>
+<ul>
+<li>What are some questions you would like to “ask” of the data?</li>
+<li>What is missing in the data that you wish was there?</li>
+<li>Are there other bodies of data that you think it would be helpful to
+combine with the data already provided? Where would you look to find
+that new data?</li>
+<li>Are any biases present in the data? Are any biases present in the
+questions you are asking about it?</li>
+<li>Start brainstorming about other bodies of data that you might be
+interested in exploring.</li>
+</ul>
+<h3 id="tue-30-aug-what-is-digital-humanities"><span class="date">Tue 30
+Aug</span> What is “Digital Humanities?”</h3>
+<p><a
+href="What%20is%20Digital%20Humanities?">https://whatisdigitalhumanities.com/</a>
+(Visit this site and refresh the page several times. You’ll see what I
+mean…)</p>
+<p><span class="citation"
+data-cites="burdick_ShortGuideDigital_2012">Anne Burdick <span>“A Short
+Guide to the Digital Humanities,”</span> in <em>Digital humanities</em>,
+ed. Anne Burdick et al. (Cambridge, Mass.: MIT Press, 2012),
+121–35.</span></p>
+<p><span class="citation"
+data-cites="burdick_HumanitiesDigitalHumanities_2012">Anne Burdick
+<span>“Humanities to Digital Humanities,”</span> in <em>Digital
+humanities</em>, ed. Anne Burdick et al. (Cambridge, Mass.: MIT Press,
+2012), 1–26.</span></p>
+<h2 id="unit-2.-big-data">Unit 2. Big Data</h2>
+<h3 id="thu-01-sep"><span class="date">Thu 01 Sep</span></h3>
+<p>Take a look at <a
+href="https://books.google.com/ngrams/graph?content=%22Brandeis+University%22%2C+%22computer%22&amp;share=&amp;year_start=1900&amp;year_end=2019&amp;corpus=26&amp;smoothing=3">Google
+Ngrams</a>. Play around with it. Make some notes about what you found
+and bring them to class.</p>
+<p><span class="citation" data-cites="alvaro_BigDataDigital_2013">Sandra
+Álvaro <span>“Big Data and Digital Humanities: From Social Computing to
+the Challenges of Connected Culture,”</span> <em>CCCB LAB</em> (blog),
+October 23, 2013.</span></p>
+<p><span class="citation" data-cites="hitchcock_BigDataDead_2013">Tim
+Hitchcock <span>“Big Data for Dead People: Digital Readings and the
+Conundrums of Positivism,”</span> <em>Historyonics</em> (blog), December
+9, 2013.</span></p>
+<h3
+id="tue-06-sep-guest-laura-hibbler-brandeis-associate-university-librarian-for-research-and-instruction"><span
+class="date">Tue 06 Sep</span> Guest: Laura Hibbler, Brandeis Associate
+University Librarian for Research and Instruction</h3>
+<p>How to assess the credibility of digital information.</p>
+<h3
+id="thu-08-sep-guest-prof.-jordana-goodman-boston-university-school-of-law"><span
+class="date">Thu 08 Sep</span> Guest: Prof. Jordana Goodman, Boston
+University School of Law</h3>
+<p>The benefits and pitfalls of numbers and statistics in digital
+humanities research</p>
+<h2 id="unit-4.-digital-visualization-in-the-humanities">Unit 4. Digital
+Visualization in the Humanities</h2>
+<h3 id="tue-13-sep"><span class="date">Tue 13 Sep</span></h3>
+<p><span class="citation"
+data-cites="boone_AztecPictorialHistories_1994">Elizabeth Hill Boone
+<span>“Aztec Pictorial Histories: Records Without Words,”</span> in
+<em>Writing Without Words: Alternative Literacies in Mesoamerica and the
+Andes</em>, ed. Elizabeth Hill Boone and Walter Mignolo (Duke University
+Press, 1994), 50–76.</span></p>
+<p><span class="citation"
+data-cites="thompson_SurprisingHistoryInfographic_2016">Clive Thompson
+<span>“The Surprising History of the Infographic,”</span> Smithsonian,
+July 2016.</span> <a
+href="https://www.smithsonianmag.com/history/surprising-history-infographic-180959563/">[Link]</a></p>
+<p><span class="citation"
+data-cites="rosenberg_CartographiesTimeHistory_2013">Daniel Rosenberg
+and Anthony Grafton <em>Cartographies of Time: A History of the
+Timeline</em> (Princeton Architectural Press, 2013).</span></p>
+<p><a href="https://infowetrust.com/scroll/">R. J. Andrews, “Map of
+Firsts: An interactive timeline of the most iconic infographics”</a></p>
+<h3
+id="thu-15-sep-guest-alex-willett-brandeis-gis-and-social-sciences-librarian"><span
+class="date">Thu 15 Sep</span> Guest: Alex Willett Brandeis GIS and
+Social Sciences Librarian</h3>
+<p>How and where to find data</p>
+<h3 id="tue-20-sep-experimenting-with-digital-visualization"><span
+class="date">Tue 20 Sep</span> Experimenting with digital
+visualization</h3>
+<h2 id="unit-3.-close-reading-and-distant-reading">Unit 3. Close Reading
+and Distant Reading</h2>
+<h3 id="thu-22-sep"><span class="date">Thu 22 Sep</span></h3>
+<p><span class="citation"
+data-cites="kramer_WritingLiterallyActually_2014">Michael J. Kramer
+<span>“Writing On The Past, Literally (Actually, Virtually),”</span>
+February 4, 2014.</span></p>
+<p><a
+href="https://dhdebates.gc.cuny.edu/read/untitled-f2acf72c-a469-49d8-be35-67f9ac1e3a60/section/620caf9f-08a8-485e-a496-51400296ebcd#ch19">Andrew
+Goldstone, “Teaching Quantitative Methods: What Makes It Hard (in
+Literary Studies)”</a></p>
+<p><span class="citation"
+data-cites="presner_EthicsAlgorithmClose_2016">Todd Presner <span>“The
+Ethics of the Algorithm: Close and Distant Listening to the Shoah
+Foundation Visual History Archive,”</span> in <em>Probing the Ethics of
+Holocaust Culture</em>, ed. Claudio Fogu, Wulf Kansteiner, and Todd
+Presner (Harvard University Press, 2016), 175–202.</span></p>
+<h3
+id="thu-29-sep-guest-natalie-sussman-brandeis-digital-literacy-instruction-librarian"><span
+class="date">Thu 29 Sep</span> Guest: Natalie Sussman, Brandeis Digital
+Literacy Instruction Librarian</h3>
+<p>Processing large corpora. (Where to find your corpus, how to refine
+it, what questions to ask of it, what tools and methods to use.)</p>
+<h3 id="tue-04-oct-experiments-with-language-processing"><span
+class="date">Tue 04 Oct</span> Experiments with language processing</h3>
+<p>Be sure to bring a computer to class today</p>
+<h2 id="unit-5.-mapping">Unit 5. Mapping</h2>
+<h3 id="thu-06-oct"><span class="date">Thu 06 Oct</span></h3>
+<p><a href="http://maptime.io/anatomy-of-a-web-map/#0">Anatomy of a Web
+Map</a></p>
+<p>Explore at least two of the following sites:</p>
+<ul>
+<li><a
+href="https://guides.library.brandeis.edu/c.php?g=502151&amp;p=3437017">Brandeis
+Library, Finding Maps in Digital Collections &amp; Databases</a></li>
+<li><a href="https://persuasivemaps.library.cornell.edu/">Persuasive
+Maps (Cornell University Library)</a></li>
+<li>Will Thomas and Edward Ayers, “The Difference Slavery Made: A Close
+Analysis of Two American Communities,” <a
+href="http://www.vcdh.virginia.edu/AHR/"
+class="uri">http://www.vcdh.virginia.edu/AHR/</a></li>
+<li>Hypercities](http://hypercities.com/)</li>
+<li><a href="http://www.philaplace.org/">PhilaPlace</a></li>
+<li><a href="http://culturalgardens.org/euclidcorridor/">Euclid Corridor
+History Project</a></li>
+</ul>
+<h2 id="unit-6.-human-bias-computational-bias">Unit 6. Human bias,
+computational bias</h2>
+<h3 id="tue-11-oct-race-racism-and-anti-racism"><span class="date">Tue
+11 Oct</span> Race, Racism and Anti-Racism</h3>
+<p><a href="https://youtu.be/u5mNa6KE0lA?start=1633&amp;end=2150">Hannah
+Fry, Royal Institution Christmas Lectures, 2019</a> (Watch from 27:13 to
+35:30)</p>
+<p><span class="citation"
+data-cites="noble_AlgorithmsOppressionHow_2018">Safiya Umoja. Noble
+<em>Algorithms of oppression: how search engines reinforce racism</em>
+(New York: New York University Press, 2018).</span> (Selections)</p>
+<p>Explore the following projects:</p>
+<ul>
+<li>https://www.media.mit.edu/projects/algorithmic-justice-league/overview/</li>
+<li>https://www.media.mit.edu/projects/gender-shades/overview/</li>
+<li>https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms</li>
+</ul>
+<h3 id="thu-20-oct-guest-alex-willett"><span class="date">Thu 20
+Oct</span> Guest: Alex Willett</h3>
+<p>How, why (and why not) to use digital maps</p>
+<h3 id="tue-25-oct-gender-and-sexuality"><span class="date">Tue 25
+Oct</span> Gender and Sexuality</h3>
+<p><span class="citation"
+data-cites="thompson_SecretHistoryWomen_2019">Clive Thompson <span>“The
+Secret History of Women in Coding,”</span> <em>The New York Times</em>,
+February 13, 2019, sec. Magazine.</span></p>
+<p><a
+href="https://dhdebates.gc.cuny.edu/read/untitled-4e08b137-aec5-49a4-83c0-38258425f145/section/466311ae-d3dc-4d50-b616-8b5d1555d231#intro">Introduction
+to <em>Bodies of Information: Intersectional Feminism and Digital
+Humanities</em> by Jacqueline Wernimont and Elizabeth Losh</a></p>
+<h3 id="thu-27-oct-guest-prof.-sabine-von-mering"><span class="date">Thu
+27 Oct</span> Guest: Prof. Sabine von Mering</h3>
+<p><span class="citation"
+data-cites="hubscher_AntisemitismSocialMedia_2022">Monika Hübscher and
+Sabine von Mering, eds. <em>Antisemitism on Social Media</em> (Milton:
+Taylor and Francis, 2022).</span></p>
+<h3 id="tue-01-nov-accessibility"><span class="date">Tue 01 Nov</span>
+Accessibility</h3>
+<p><span class="citation"
+data-cites="williams_DisabilityUniversalDesign_2012">George H. Williams
+<span>“Disability, Universal Design, and the Digital Humanities,”</span>
+in <em>Debates in the Digital Humanities</em>, ed. Matthew K. Gold, NED
+- New edition (University of Minnesota Press, 2012), 202–12.</span></p>
+<h2 id="visits-from-dh-practitioners-and-scholars">Visits from DH
+Practitioners and Scholars</h2>
+<h3 id="thu-03-nov-sara-wolkenfeld-sefaria"><span class="date">Thu 03
+Nov</span> Sara Wolkenfeld (<em>Sefaria</em>)</h3>
+<h3
+id="tue-08-nov-prof.-frances-malino-digital-heritage-mapping-and-diarna-project"><span
+class="date">Tue 08 Nov</span> Prof. Frances Malino (<em>Digital
+Heritage Mapping and Diarna project</em>)</h3>
+<h2 id="unit-8.-preliminary-presentations-and-class-feedback">Unit 8.
+Preliminary presentations and class feedback</h2>
+<h3 id="thu-10-nov"><span class="date">Thu 10 Nov</span></h3>
+<h3 id="tue-15-nov"><span class="date">Tue 15 Nov</span></h3>
+<h2 id="unit-9.-supervised-work-on-final-projects">Unit 9. Supervised
+work on final projects</h2>
+<h3 id="thu-17-nov-guest-natalie-sussman"><span class="date">Thu 17
+Nov</span> Guest: Natalie Sussman</h3>
+<p>Methods and tools: How to build an accessible platform to present
+your final project</p>
+<h3 id="tue-22-nov"><span class="date">Tue 22 Nov</span></h3>
+<h3 id="tue-29-nov"><span class="date">Tue 29 Nov</span></h3>
+<h2 id="unit-10.-concluding-conversations-and-presentations">Unit 10.
+Concluding conversations and presentations</h2>
+<h3 id="thu-01-dec"><span class="date">Thu 01 Dec</span></h3>
+<h3 id="tue-06-dec"><span class="date">Tue 06 Dec</span></h3>
+</body>
+</html>
