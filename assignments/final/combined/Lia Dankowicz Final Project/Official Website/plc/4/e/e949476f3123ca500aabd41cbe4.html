@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+	<title>A Genealogy of the Swedish Royal Family - Places</title>
+	<meta charset="UTF-8" />
+	<meta name ="viewport" content="width=device-width; height=device-height; initial-scale=1.0; minimum-scale=0.5; maximum-scale=10.0; user-scalable=yes" />
+	<meta name ="apple-mobile-web-app-capable" content="yes" />
+	<meta name="generator" content="Gramps GrampsAIO64-5.1.3-2 http://gramps-project.org/" />
+	<meta name="author" content="" />
+	<link href="../../../images/favicon2.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="../../../css/narrative-print.css" media="print" rel="stylesheet" type="text/css" />
+	<link href="../../../css/narrative-screen.css" media="screen" rel="stylesheet" type="text/css" />
+	<script>function navFunction() { var x = document.getElementById("dropmenu"); if (x.className === "nav") { x.className += " responsive"; } else { x.className = "nav"; } }</script>
+	<link href="../../../css/narrative-maps.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/javascript" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://openlayers.org/en/latest/build/ol.js" type="text/javascript"></script>
+	<link href="https://openlayers.org/en/latest/css/ol.css" rel="stylesheet" type="text/css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="../../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/index-intro-gap.css">
+</head>
+<body  onload = "initialize();" >
+    <div id="outerwrapper">
+        <div id="stickyheader" class="stickyheader">
+            <div id="header">
+                <a href="javascript:void(0);" class="navIcon" onclick="navFunction()">&#8801;</a>
+                <h1 id="SiteTitle">A Genealogy of the Swedish Royal Family</h1>
+            </div>
+            <div class="wrappernav" id="nav" role="navigation">
+                <div class="container">
+                    <ul class="nav" id="dropmenu">
+                        <li><a href="../../../index.html" title="Home">Home</a></li>
+                        <li><a href="../../../introduction.html" title="About the Project">About the Project</a></li>
+                        <li><a href="../../../royalfamily.html" title="Royal Family"> Royal Family</a></li>
+                        <li class = "CurrentSection"><a href="../../../individuals.html" title="Individuals">Individuals</a></li>
+                        <li><a href="../../../surnames.html" title="Surnames">Surnames</a></li>
+                        <li><a href="../../../thumbnails.html" title="Media">Media</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		<div class="content" id="PlaceDetail">
+			<h3>Denmark</h3>
+			<div id="summaryarea">
+				<table class="infolist place">
+					<tbody>
+						<tr>
+							<td class="ColumnAttribute">Latitude</td>
+							<td class="ColumnValue">55.545392</td>
+						</tr>
+						<tr>
+							<td class="ColumnAttribute">Longitude</td>
+							<td class="ColumnValue">11.976576</td>
+						</tr>
+						<tr>
+							<td class="ColumnAttribute">Country</td>
+							<td class="ColumnValue">Denmark</td>
+						</tr>
+						<tr>
+							<td>
+							&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<th class="ColumnAttribute">Enclosed By</th>
+						</tr>
+						<tr>
+							<td>
+							&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<th class="ColumnAttribute">Place Encloses</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h4>Place Map</h4>
+			<div id="map_canvas"><script type="text/javascript">
+  var marker_png = '../../../images/marker.png'
+
+  function initialize(){
+    var map;
+    var tracelife = [[11.976576, 55.545392, 'Denmark']];
+    var iconStyle = new ol.style.Style({
+      image: new ol.style.Icon(({
+        anchor: [0.2, 48],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        opacity: 1.0,
+        src: marker_png
+      }))
+    });
+    var markerSource = new ol.source.Vector({
+    });
+    for (var i = 0; i < tracelife.length; i++) {
+      var loc = tracelife[i];
+      var iconFeature = new ol.Feature({
+       geometry: new ol.geom.Point(ol.proj.transform([loc[0], loc[1]],
+                                                     'EPSG:4326', 'EPSG:3857')),
+       name: loc[2],
+      });
+      iconFeature.setStyle(iconStyle);
+      markerSource.addFeature(iconFeature);
+    }
+    markerLayer = new ol.layer.Vector({
+      source: markerSource,
+      style: iconStyle
+    });
+    var centerCoord = new ol.proj.transform([11.97657600, 55.54539200], 'EPSG:4326', 'EPSG:3857');
+    map= new ol.Map({
+                 target: 'map_canvas',
+                 layers: [new ol.layer.Tile({ source: new ol.source.OSM() }),
+                          markerLayer],
+                 view: new ol.View({ center: centerCoord, zoom: 10 })
+                 });
+    var element = document.getElementById('popup');
+    var tooltip = new ol.Overlay({
+      element: element,
+      positioning: 'bottom-center',
+      stopEvent: false
+    });
+    map.addOverlay(tooltip);
+    var displayFeatureInfo = function(pixel) {
+      var feature = map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+        return feature;
+      });
+      var info = document.getElementById('popup');
+      if (feature) {
+        var geometry = feature.getGeometry();
+        var coord = geometry.getCoordinates();
+        tooltip.setPosition(coord);
+        $(element).siblings('.popover').css({ width: '250px' });
+        $(element).siblings('.popover').css({ background: '#aaa' });
+        $(info).popover({
+          'placement': 'auto',
+          'html': true,
+          'content': feature.get('name')
+        });
+        $(info).popover('show');
+      } else {
+        // TODO : some warning with firebug here
+        $(info).popover('destroy');
+        $('.popover').remove();
+      }
+    };
+    map.on('pointermove', function(evt) {
+      if (evt.dragging) {
+        return;
+      }
+      var pixel = map.getEventPixel(evt.originalEvent);
+      displayFeatureInfo(pixel);
+    });
+    map.on('click', function(evt) {
+      displayFeatureInfo(evt.pixel);
+    });
+  };
+</script></div>
+			<div id="popup"></div>
+			<div class="subsection" id="references">
+				<h4>References</h4>
+				<ol class="Col1" role="Volume-n-Page" type=1>
+					<li>
+						<a href="../../../ppl/c/2/e97fc6574ce7a7047a668c9062c.html">
+						Olafsson, Magnus
+						 (October 25, 1047) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/8/e980a8b27a23cd414e5cc130782.html">
+						of Sweden, Helena
+						 (about 1130) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/9/0/e980a7d97cf2c1aeeb48992ed09.html">
+						Magnussen, Knud V
+						 (August 9, 1157) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/b/c/e980c1f19211ff86db37139b8cb.html">
+						of Denmark, Valdemar I
+						 (May 12, 1182) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/e/3/e980c09599b2dea1ad3c9b6f33e.html">
+						of Denmark, Richeza (Rikissa) Valdemarsdotter
+						 (1220) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/3/3/e9812313fed2806871041f0ba33.html">
+						of Denmark, Martha
+						 (1277) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/9/6/e980d7b8e2a16f5b21d977dcc69.html">
+						of Denmark, Valdemar IV
+						 (1320) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/3/6/e980d97905d595c3865d7bdcc63.html">
+						of Denmark, Christopher Valdemarsen
+						 (1341) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/c/2/e980dab432777e0954af201d42c.html">
+						of Denmark, Ingeborg Valdemarsdatter
+						 (January 4, 1347) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/c/2/e980e9b9b0f11b279801b2ab12c.html">
+						of Denmark, Margareta Valdemarsdatter I
+						 (March 15, 1353) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/9/6/e980d7b8e2a16f5b21d977dcc69.html">
+						of Denmark, Valdemar IV
+						 (October 24, 1375) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/8/0/e980e3cf5661bf6a3a7b7855008.html">
+						of Pfalz-Neumarkt, John (Johann)
+						 (August 15, 1407) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/c/7/e980e315309237a628d6a06fa7c.html">
+						of Pomerania, Catherine
+						 (August 15, 1407) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/4/7/e980e3cb83446a192c5b5acd974.html">
+						Family of of Pfalz-Neumarkt, John (Johann) and of Pomerania, Catherine
+						 (August 15, 1407) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/4/7/e987c1ba01c3ffb78d5a38e4974.html">
+						of Denmark, Hans (Johan) II
+						 (February 2, 1455) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/9/5/e987f5f931960998be81faa8759.html">
+						of Denmark, Margaret
+						 (June 23, 1456) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/f/4/e987c4947f3bab10a80c57e84f.html">
+						of Denmark, Kristian (Christian) II
+						 (July 1, 1481) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/f/8/e980e5d959c376e9297986bb58f.html">
+						of Brandenburg, Dorothea
+						 (November 10, 1495) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/7/4/e987fb96a7511aa365210b62547.html">
+						of Denmark, Dorothea
+						 (August 1, 1504) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/4/7/e987c1ba01c3ffb78d5a38e4974.html">
+						of Denmark, Hans (Johan) II
+						 (February 20, 1513) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/b/e987fca706f19d8463eb8c457b2.html">
+						of Denmark, John (the Elder) II
+						 (June 21, 1521) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/c/7/e987cafdda971107acbf3b0f07c.html">
+						of Denmark, Christina
+						 (November 1521) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/e/c/e987c3572d0262517586c3055ce.html">
+						of Saxony, Christina
+						 (December 8, 1521) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/1/6/e987fb0241b3e758c0f33d41e61.html">
+						of Denmark, Christian III
+						 (January 1, 1559) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/f/4/e987c4947f3bab10a80c57e84f.html">
+						of Denmark, Kristian (Christian) II
+						 (January 25, 1559) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/b/e987fca706f19d8463eb8c457b2.html">
+						of Denmark, John (the Elder) II
+						 (October 1, 1580) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/c/5/e99718f162424a29306f656c75c.html">
+						of Brunswick-Wolfenbüttel, Juliana Maria
+						 (October 10, 1796) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/e/a/e949413b5e5122fbfbbb8dc29ae.html">
+						of Denmark, Harald Christian Frederik
+						 (October 8, 1876) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/c/e949462d40b41653d06d15b37c2.html">
+						of Denmark, Christian Frederik Franz Michael Carl Valdemar Georg IX
+						 (March 11, 1899) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/5/5/e94d1d031c93065e1aa251f8755.html">
+						of Denmark, Feodora Louise Caroline-Mathilde Viktoria Alexandra Frederikke Johanne
+						 (July 3, 1910) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/b/d/e949e4eecde80f3866c93b23db.html">
+						of Denmark, Caroline-Mathilde Louise Dagmar Christine Maud Augusta Ingeborg Thyra Adelheid
+						 (April 27, 1912) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/d/d/e94d3f9152939e22b0ce06dc5dd.html">
+						of Denmark, George Valdemar Carl Axel
+						 (April 16, 1920) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/1/b/e94d9b8f1377e11adb7c099ddb1.html">
+						Castenskjold, Jørgen
+						 (November 23, 1922) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/e/6/e94d9b0815532556e52093a876e.html">
+						Family of Castenskjold, Jørgen and of Denmark, Dagmar Louise Elisabeth
+						 (November 23, 1922) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/6/6/e94940c9e3135ddb860c766b166.html">
+						of Denmark, Dagmar Louise Elisabeth
+						 (November 23, 1922) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/3/8/e94d9c01f0917eb6ec4a4ab4883.html">
+						Castenskjold, Carl Frederik Anton Jørgen
+						 (November 13, 1923) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/a/1/e94d9d7b0721bc626388c23d41a.html">
+						Castenskjold, Jørgen Frederik Aage Erik Helge
+						 (March 16, 1928) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/1/d/e94d9e9b6de3a0654a078b2a6d1.html">
+						Castenskjold, Dagmar Louise Thyra Sophia
+						 (September 11, 1930) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/b/d/e949e4eecde80f3866c93b23db.html">
+						of Denmark, Caroline-Mathilde Louise Dagmar Christine Maud Augusta Ingeborg Thyra Adelheid
+						 (September 8, 1933) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/c/1/e949e3c46b62c466a81b607e71c.html">
+						of Denmark, Knud Christian Frederik Michael
+						 (September 8, 1933) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/7/0/e949e4c11283346306e5275aa07.html">
+						Family of of Denmark, Knud Christian Frederik Michael and of Denmark, Caroline-Mathilde Louise Dagmar Christine Maud Augusta Ingeborg Thyra Adelheid
+						 (September 8, 1933) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/9/e/e94d1c9f199372014fe2d8aa0e9.html">
+						Family of of Schaumburg-Lippe, Christian Nikolaus Wilhelm Friedrich Albert Ernst and of Denmark, Feodora Louise Caroline-Mathilde Viktoria Alexandra Frederikke Johanne
+						 (September 9, 1937) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/5/5/e94d1d031c93065e1aa251f8755.html">
+						of Denmark, Feodora Louise Caroline-Mathilde Viktoria Alexandra Frederikke Johanne
+						 (September 9, 1937) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/9/c/e94d1bd2194830e7d7df6338c9.html">
+						of Schaumburg-Lippe, Christian Nikolaus Wilhelm Friedrich Albert Ernst
+						 (September 9, 1937) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/4/6/e949e86d8c53cf01865ed829164.html">
+						of Denmark, Ingolf Christian Frederik Knud Harald Gorm Gustav Viggo Valdemar Aage
+						 (February 17, 1940) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/e/4/e949ebd12a27c3380b7d09a334e.html">
+						Maltoft-Nielsen, Anne Dorte
+						 (October 3, 1947) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/6/6/e94940c9e3135ddb860c766b166.html">
+						of Denmark, Dagmar Louise Elisabeth
+						 (October 11, 1961) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/d/5/e94d2a6ee8a29e5b015ca39d5d.html">
+						of Schleswig-Holstein-Sonderburg-Glücksburg, Helene Adelheid Viktoria Marie
+						 (June 30, 1962) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/a/1/e94d9d7b0721bc626388c23d41a.html">
+						Castenskjold, Jørgen Frederik Aage Erik Helge
+						 (May 4, 1964) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/8/e94983aca8c63ae2da78e034a82.html">
+						Ahlefeldt-Laurvig-Bille, Michael Preben
+						 (February 26, 1965) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/4/6/e949e86d8c53cf01865ed829164.html">
+						of Denmark, Ingolf Christian Frederik Knud Harald Gorm Gustav Viggo Valdemar Aage
+						 (January 13, 1968) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/c/a/e949e977a6725cf474c008706ac.html">
+						Family of of Denmark, Ingolf Christian Frederik Knud Harald Gorm Gustav Viggo Valdemar Aage and Terney, Inge
+						 (January 13, 1968) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/a/9/e949e989a332433d693d044589a.html">
+						Terney, Inge
+						 (January 13, 1968) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/9/f/e949eb0f2885c452dacd2f128f9.html">
+						of Denmark, Christian Frederik Franz Knud Harald Carl Oluf Gustav Georg Erik
+						 (February 27, 1971) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/e/4/e949ebd12a27c3380b7d09a334e.html">
+						Maltoft-Nielsen, Anne Dorte
+						 (February 27, 1971) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/a/3/e949eb6f67017a2da58165cfa3a.html">
+						Family of of Denmark, Christian Frederik Franz Knud Harald Carl Oluf Gustav Georg Erik and Maltoft-Nielsen, Anne Dorte
+						 (February 27, 1971) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/1/d/e94cfc07c9c17345bc6742601d1.html">
+						Behn, Ari Mikael
+						 (September 30, 1972) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/b/e949ed5c87a3a7520b8c2de52b2.html">
+						of Rosenborg, Camilla Alexandrine Kristine
+						 (October 29, 1972) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/6/2/e949f160f7777332b47792e426.html">
+						of Rosenborg, Josephine Caroline Elisabeth
+						 (October 29, 1972) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/7/1/e949f3c76ab7ff214bdd716fb17.html">
+						of Rosenborg, Feodora Mathilde Helena
+						 (February 27, 1975) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/a/e/e94d3cae29097ca54becd55dea.html">
+						Bernadotte, Margaretha Sofia Lovisa Ingeborg
+						 (January 4, 1977) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/d/7/e94d214aca76868fcf3861d6b7d.html">
+						of Schaumburg-Lippe, Eleonore-Christine Eugenie Benita Feodora Maria
+						 (December 22, 1978) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/8/e949ee4eb225ac45e9b5ca29082.html">
+						Rosanes, Mikael John
+						 (May 20, 1995) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/9/0/e949ee3c7bb17303d01d8bea909.html">
+						Family of Rosanes, Mikael John and of Rosenborg, Camilla Alexandrine Kristine
+						 (May 20, 1995) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/b/e949ed5c87a3a7520b8c2de52b2.html">
+						of Rosenborg, Camilla Alexandrine Kristine
+						 (May 20, 1995) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/4/6/e949e86d8c53cf01865ed829164.html">
+						of Denmark, Ingolf Christian Frederik Knud Harald Gorm Gustav Viggo Valdemar Aage
+						 (March 7, 1998) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/4/6/e949ea168b0829b0f4712e1b64.html">
+						Family of of Denmark, Ingolf Christian Frederik Knud Harald Gorm Gustav Viggo Valdemar Aage and Hjorhøy, Sussie
+						 (March 7, 1998) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/d/d/e949ea282b43ce0deadb9d532dd.html">
+						Hjorhøy, Sussie
+						 (March 7, 1998) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/6/2/e949f160f7777332b47792e426.html">
+						of Rosenborg, Josephine Caroline Elisabeth
+						 (October 3, 1998) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/7/a/e949f1defa674832675c59e00a7.html">
+						Family of Schmidt, Thomas Christian and of Rosenborg, Josephine Caroline Elisabeth
+						 (October 3, 1998) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/4/2/e949f1f5ec5760da00f857a0f24.html">
+						Schmidt, Thomas Christian
+						 (October 3, 1998) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/8/2/e949491e460397f2099034ad928.html">
+						of Sweden, Ingrid Victoria Sofia Louise Margareta
+						 (November 7, 2000) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/3/8/e94d9c01f0917eb6ec4a4ab4883.html">
+						Castenskjold, Carl Frederik Anton Jørgen
+						 (April 14, 2006) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/2/f/e949627addd3a8e9ab5fe2e76f2.html">
+						of Denmark, Joachim Holger Waldemar Christian
+						 (May 24, 2008) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../fam/7/6/e94972fe44f78d403bf7b877f67.html">
+						Family of of Denmark, Joachim Holger Waldemar Christian and of Denmark, Marie Agathe Odile
+						 (May 24, 2008) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/d/6/e9497318ca25c7ba1eafb95ab6d.html">
+						of Denmark, Marie Agathe Odile
+						 (May 24, 2008) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/1/d/e94d9e9b6de3a0654a078b2a6d1.html">
+						Castenskjold, Dagmar Louise Thyra Sophia
+						 (July 12, 2013) 
+						
+						</a>
+					</li>
+					<li>
+						<a href="../../../ppl/e/f/e94951f84c11a8a45ff508f95fe.html">
+						of Denmark, Henrik
+						 (February 13, 2018) 
+						
+						</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="fullclear"></div>
+		<div id="footer">
+			<div id="user_footer">
+				<div class="grampsstylednote">
+					<p>
+					Lia Dankowicz<br />
+					ldanko@brandeis.edu
+					</p>
+				</div>
+			</div>
+			<p id="createdate">
+			Generated by <a href="http://gramps-project.org/">Gramps</a> GrampsAIO64-5.1.3-2<br />Last change was the 2020-11-19 10:50:15
+			</p>
+			<p id="copyright">
+			
+			</p>
+		</div>
+	</div>
+</body>
+</html>
